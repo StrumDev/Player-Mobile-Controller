@@ -1,4 +1,4 @@
-# PlayerControllerMobile
+# Player Controller Mobile
 This is my version of a 3D first person controller for phones
 
 ![image](https://user-images.githubusercontent.com/114677727/193647714-c2635dc0-686a-43ea-9e94-0b469be3b5ad.png)
