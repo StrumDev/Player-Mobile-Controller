@@ -1,11 +1,7 @@
-// SrtumDev
-// YouTube https://www.youtube.com/channel/UCsAcfm0AVVZwLiJ3D451R3g/featured
-// Discord https://discord.gg/GtzqG7pgNJ
-// GitHub https://github.com/StrumDev
 using UnityEngine;
 
 [RequireComponent(typeof (CharacterController))]
-public class PlayerMuvment : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float Speed = 5;
     public float Gravity = -16f;

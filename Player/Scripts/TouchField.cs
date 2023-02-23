@@ -8,7 +8,6 @@ using UnityEngine.EventSystems;
 
 public class TouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    
     public Vector2 TouchAxis { get; private set; }
 
     private Vector2 pointer;
