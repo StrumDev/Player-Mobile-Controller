@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    public float Sensiviti = 0.3f;
-    public TouchField TouchField;
+    public PlayerInput input;
     public Transform playerBody;
 
     private float xRot;
@@ -12,7 +11,7 @@ public class PlayerLook : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector2 mou = new Vector2(TouchField.TouchAxis.x * Sensiviti, TouchField.TouchAxis.y * Sensiviti);
+        Vector2 mou = new Vector2(input.MouseX * input.Sensitivity, input.MouseY * input.Sensitivity);
 
         xRot -= mou.y;
         xRot = Mathf.Clamp(xRot, -90f, 90f);

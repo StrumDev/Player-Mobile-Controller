@@ -3,24 +3,26 @@ using UnityEngine;
 [RequireComponent(typeof (CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    public PlayerInput input;
+
     public float Speed = 5;
     public float Gravity = -16f;
     public float JumpStrength = 2f;
-    public FloatingJoystick FloatingJoystick;
 
     private CharacterController character;
     private Vector3 velocity;
     
     private void Start() 
     {
+        input.OnJump = JumpEvent;
         character = GetComponent<CharacterController>();
     }
 
     private void Update()
     {
-        Vector2 input = new Vector2(FloatingJoystick.Horizontal * Speed, FloatingJoystick.Vertical * Speed);
+        Vector2 localInput = new Vector2(input.Horizontal * Speed, input.Vertical * Speed);
 
-        Vector3 move = transform.right * input.x + transform.forward * input.y;
+        Vector3 move = transform.right * localInput.x + transform.forward * localInput.y;
 
         velocity.x = move.x;
         velocity.z = move.z;
