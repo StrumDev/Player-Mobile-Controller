@@ -1,5 +1,6 @@
 # Player Controller Mobile
-This is my version of a 3D first person controller for phones
+3D Сharacter controller for phones and PC
+From the first person.
 
 ![image](https://github.com/StrumDev/Player-Mobile-Controller/assets/114677727/c8e1544b-e5c0-4606-889f-f4770fa6dd5a)
 
