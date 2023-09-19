@@ -91,7 +91,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3357909525580738130}
-  - component: {fileID: 790274462367887078}
   - component: {fileID: 2661160731713463831}
   - component: {fileID: 7628257002407761500}
   m_Layer: 0
@@ -108,7 +107,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3357909525580738131}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -117,18 +116,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &790274462367887078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3357909525580738131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46337df19b7ce414f96cd8b022209b8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2661160731713463831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,10 +128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586eadd4dea8ca84a867c59986b8138f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
+  input: {fileID: 0}
+  Speed: 8
+  RunSpeed: 16
   Gravity: -16
   JumpStrength: 2
-  FloatingJoystick: {fileID: 0}
 --- !u!143 &7628257002407761500
 CharacterController:
   m_ObjectHideFlags: 0
@@ -259,8 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a73ddff3fb71147b62a9f72bce576d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sensiviti: 0.3
-  TouchField: {fileID: 0}
+  input: {fileID: 0}
   playerBody: {fileID: 3357909525580738130}
 --- !u!1 &8935739952380120648
 GameObject:

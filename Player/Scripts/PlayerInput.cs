@@ -19,54 +19,52 @@ public class PlayerInput : MonoBehaviour
     public FloatingJoystick FloatingJoystick;
 
 
-    [HideInInspector] public float Horizontal, Vertical;
-    [HideInInspector] public float MouseX, MouseY;
+    public float Horizontal => Controls == Controller.PC ? Input.GetAxis("Horizontal") : FloatingJoystick.Horizontal;
+    public float Vertical => Controls == Controller.PC ? Input.GetAxis("Vertical") : FloatingJoystick.Vertical;
+
+    public float MouseX => Controls == Controller.PC ? Input.GetAxis("Mouse X") * 10 : TouchField.TouchAxis.x;
+    public float MouseY => Controls == Controller.PC ? Input.GetAxis("Mouse Y") * 10 : TouchField.TouchAxis.y;
+
     public Action OnJump;
+    public Action<bool> OnRun;
 
     private void Update()
     {
-        if (!VisibleCursor)
-            Cursor.lockState = CursorLockMode.Locked;
-        else
-            Cursor.lockState = CursorLockMode.None;
-            
-        Cursor.visible = VisibleCursor;
+        if (Cursor.visible != VisibleCursor)
+        {
+            if (!VisibleCursor)
+                Cursor.lockState = CursorLockMode.Locked;
+            else 
+                Cursor.lockState = CursorLockMode.None;
+                
+            Cursor.visible = VisibleCursor;
+        }
 
         if (Controls == Controller.PC)
         {
-            MouseX = Input.GetAxis("Mouse X") * 10;
-            MouseY = Input.GetAxis("Mouse Y") * 10;
+            OnRun?.Invoke(Input.GetKey(KeyCode.LeftShift));
 
-            InputPC();
-
+            if (Input.GetKeyDown(KeyCode.Space))
+                OnJump?.Invoke();
+            
             MobileCanvas.SetActive(false);
             return;
         }
 
         if (Controls == Controller.Mobile)
         {
-            MouseX = TouchField.TouchAxis.x;
-            MouseY = TouchField.TouchAxis.y;
-
-            InputMobile();
-
             MobileCanvas.SetActive(true);
             return;
         }
     }
 
-    private void InputPC()
+    public void RunEvent(bool isRun)
     {
-        Horizontal = Input.GetAxis("Horizontal");
-        Vertical = Input.GetAxis("Vertical");
-
-        if (Input.GetKeyDown(KeyCode.Space))
-            OnJump?.Invoke();
+        OnRun?.Invoke(isRun);
     }
 
-    private void InputMobile()
+    public void JumpEvent()
     {
-        Horizontal = FloatingJoystick.Horizontal;
-        Vertical = FloatingJoystick.Vertical;
+        OnJump?.Invoke();
     }
 }
